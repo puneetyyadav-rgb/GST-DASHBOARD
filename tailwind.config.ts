@@ -10,30 +10,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        border: "hsl(217, 33%, 17%)",
-        input: "hsl(217, 33%, 17%)",
-        ring: "hsl(212, 95%, 68%)",
-        background: "hsl(222, 47%, 6%)",
-        foreground: "hsl(210, 40%, 98%)",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         card: {
-          DEFAULT: "hsl(222, 47%, 9%)",
-          foreground: "hsl(210, 40%, 98%)",
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
         primary: {
-          DEFAULT: "hsl(212, 95%, 68%)",
-          foreground: "hsl(222, 47%, 11%)",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(217, 32%, 17%)",
-          foreground: "hsl(210, 40%, 98%)",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(217, 33%, 15%)",
-          foreground: "hsl(215, 20%, 65%)",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(142, 71%, 45%)",
-          foreground: "hsl(222, 47%, 11%)",
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
         amber: {
           glow: "rgba(245, 158, 11, 0.15)"

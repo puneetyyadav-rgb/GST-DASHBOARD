@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { X, Terminal, Database, Code2, Cpu } from 'lucide-react';
+import { Terminal, X, Database, Code2, Cpu, CheckCircle2 } from 'lucide-react';
 
 interface BackendSchemaModalProps {
   isOpen: boolean;
@@ -15,288 +15,136 @@ export const BackendSchemaModal: React.FC<BackendSchemaModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
-      onClick={onClose}
-    >
-      <div
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto glass-panel rounded-3xl border border-slate-700 shadow-2xl p-6 sm:p-8 space-y-6"
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/70 backdrop-blur-md animate-in fade-in duration-200">
+      <div 
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col text-slate-900 dark:text-slate-100"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
-        {/* Modal Header */}
-        <div className="space-y-2 pr-10">
+        <div className="p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-2xl bg-gradient-to-br from-violet-600/30 to-blue-600/30 border border-violet-500/20">
-              <Terminal className="w-6 h-6 text-violet-400" />
+            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+              <Terminal className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-white leading-tight">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-bold text-cyan-700 dark:text-cyan-400 bg-cyan-100 dark:bg-cyan-950 px-2 py-0.5 rounded border border-cyan-300 dark:border-cyan-800 flex items-center gap-1">
+                  <Database className="w-3 h-3" />
+                  FastAPI Python Backend Spec
+                </span>
+              </div>
+              <h3 className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-slate-100 mt-0.5">
                 FastAPI Backend Schema & Scrapling Integration
-              </h2>
-              <p className="text-xs text-slate-400 font-mono mt-0.5">
-                v1.0.0 &middot; Python 3.12 &middot; Async Pipeline
-              </p>
+              </h3>
             </div>
           </div>
+
+          <button
+            onClick={onClose}
+            className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
-        {/* Section 1: API Endpoints */}
-        <div className="space-y-3 pt-2">
-          <div className="flex items-center gap-2 text-sm font-semibold text-blue-400">
-            <Database className="w-4 h-4" />
-            <span>REST API Endpoints</span>
-            <span className="ml-auto px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-mono text-blue-300">
-              OpenAPI 3.1
-            </span>
+        <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-xs sm:text-sm">
+          
+          <div className="space-y-2">
+            <h4 className="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-2 uppercase tracking-wider text-xs font-mono">
+              <Code2 className="w-4 h-4" />
+              1. REST API Endpoints Specification
+            </h4>
+            <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 font-mono space-y-2.5 text-xs">
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-400 font-extrabold border border-emerald-300 dark:border-emerald-800">GET</span>
+                <span className="text-slate-900 dark:text-slate-100 font-bold">/api/v1/cases</span>
+                <span className="text-slate-500 dark:text-slate-400">— List all GST cases with filtering & pagination</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-400 font-extrabold border border-emerald-300 dark:border-emerald-800">GET</span>
+                <span className="text-slate-900 dark:text-slate-100 font-bold">/api/v1/cases/&#123;id&#125;</span>
+                <span className="text-slate-500 dark:text-slate-400">— Get full AI synthesis report & certified order</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-400 font-extrabold border border-emerald-300 dark:border-emerald-800">GET</span>
+                <span className="text-slate-900 dark:text-slate-100 font-bold">/api/v1/cases/search?q=&#123;query&#125;</span>
+                <span className="text-slate-500 dark:text-slate-400">— Full-text semantic legal search</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-400 font-extrabold border border-blue-300 dark:border-blue-800">POST</span>
+                <span className="text-slate-900 dark:text-slate-100 font-bold">/api/v1/scrape/trigger</span>
+                <span className="text-slate-500 dark:text-slate-400">— Trigger background Scrapling spider</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-0.5 rounded bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-400 font-extrabold border border-purple-300 dark:border-purple-800">SSE</span>
+                <span className="text-slate-900 dark:text-slate-100 font-bold">/api/v1/alerts/subscribe</span>
+                <span className="text-slate-500 dark:text-slate-400">— Server-Sent Events stream for live alerts</span>
+              </div>
+            </div>
           </div>
-          <pre className="p-5 rounded-2xl bg-slate-950/80 border border-slate-800/80 overflow-x-auto text-[13px] leading-relaxed font-mono">
-            <code>
-              <span className="text-slate-500"># ── FastAPI Router: /api/v1 ──────────────────────────</span>{'\n'}
-              {'\n'}
-              <span className="text-emerald-400">GET</span>
-              <span className="text-slate-300">    /api/v1/</span>
-              <span className="text-sky-400">cases</span>
-              <span className="text-slate-500">            # List all GST cases with filtering</span>{'\n'}
-              <span className="text-slate-500">                                    # Query params: category, date_from,</span>{'\n'}
-              <span className="text-slate-500">                                    #   date_to, sort_by, page, limit</span>{'\n'}
-              {'\n'}
-              <span className="text-emerald-400">GET</span>
-              <span className="text-slate-300">    /api/v1/</span>
-              <span className="text-sky-400">cases</span>
-              <span className="text-amber-400">/&#123;id&#125;</span>
-              <span className="text-slate-500">       # Get single case detail</span>{'\n'}
-              <span className="text-slate-500">                                    # Returns: GSTCase with full AI summary</span>{'\n'}
-              {'\n'}
-              <span className="text-emerald-400">GET</span>
-              <span className="text-slate-300">    /api/v1/</span>
-              <span className="text-sky-400">cases/search</span>
-              <span className="text-amber-400">?q=&#123;query&#125;</span>
-              <span className="text-slate-500"> # Full-text search</span>{'\n'}
-              <span className="text-slate-500">                                    # Powered by: PostgreSQL tsvector</span>{'\n'}
-              {'\n'}
-              <span className="text-violet-400">POST</span>
-              <span className="text-slate-300">   /api/v1/</span>
-              <span className="text-sky-400">scrape/trigger</span>
-              <span className="text-slate-500">    # Trigger Scrapling scraper</span>{'\n'}
-              <span className="text-slate-500">                                    # Body: &#123; &quot;source&quot;: &quot;cbic-gst&quot; &#125;</span>{'\n'}
-              {'\n'}
-              <span className="text-emerald-400">GET</span>
-              <span className="text-slate-300">    /api/v1/</span>
-              <span className="text-sky-400">alerts/subscribe</span>
-              <span className="text-slate-500">  # SSE endpoint for live alerts</span>{'\n'}
-              <span className="text-slate-500">                                    # Content-Type: text/event-stream</span>
-            </code>
-          </pre>
+
+          <div className="space-y-2">
+            <h4 className="font-bold text-amber-600 dark:text-amber-400 flex items-center gap-2 uppercase tracking-wider text-xs font-mono">
+              <Cpu className="w-4 h-4" />
+              2. Pydantic v2 Schema Mirroring Frontend
+            </h4>
+            <pre className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 font-mono text-xs overflow-x-auto text-slate-800 dark:text-slate-200">
+{`from pydantic import BaseModel, Field
+from typing import List, Optional
+
+class AISummary(BaseModel):
+    facts: str = Field(..., description="Factual matrix and audit history")
+    issue: str = Field(..., description="Core substantive questions of law")
+    verdict: str = Field(..., description="Binding court precedent and order")
+
+class GSTCase(BaseModel):
+    id: str
+    title: str
+    courtOrAuthority: str
+    category: str
+    date: str
+    rawDate: str
+    impactScore: float
+    sectionId: str
+    tags: List[str]
+    summary: AISummary
+    pdfUrl: Optional[str] = None
+    pdfSize: Optional[str] = None`}
+            </pre>
+          </div>
+
+          <div className="space-y-2">
+            <h4 className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2 uppercase tracking-wider text-xs font-mono">
+              <Database className="w-4 h-4" />
+              3. Scrapling Live Portal Integration (`d4vinci/Scrapling`)
+            </h4>
+            <pre className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 font-mono text-xs overflow-x-auto text-slate-800 dark:text-slate-200">
+{`from scrapling import Fetcher
+
+fetcher = Fetcher(auto_match=True)
+
+async def scrape_cbic_circulars():
+    page = fetcher.get('https://cbic-gst.gov.in/circulars.html')
+    circulars = page.css('.circular-row')
+    for c in circulars:
+        title = c.css_first('.title').text()
+        pdf_link = c.css_first('a.pdf-download').attrib['href']
+        yield {"title": title, "pdfUrl": pdf_link}`}
+            </pre>
+          </div>
+
         </div>
 
-        {/* Section 2: Pydantic Model */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm font-semibold text-amber-400">
-            <Code2 className="w-4 h-4" />
-            <span>Pydantic Data Model</span>
-            <span className="ml-auto px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[10px] font-mono text-amber-300">
-              pydantic v2
-            </span>
-          </div>
-          <pre className="p-5 rounded-2xl bg-slate-950/80 border border-slate-800/80 overflow-x-auto text-[13px] leading-relaxed font-mono">
-            <code>
-              <span className="text-violet-400">from</span>
-              <span className="text-slate-300"> pydantic </span>
-              <span className="text-violet-400">import</span>
-              <span className="text-sky-400"> BaseModel</span>
-              <span className="text-slate-300">, </span>
-              <span className="text-sky-400">Field</span>{'\n'}
-              <span className="text-violet-400">from</span>
-              <span className="text-slate-300"> typing </span>
-              <span className="text-violet-400">import</span>
-              <span className="text-sky-400"> Optional</span>
-              <span className="text-slate-300">, </span>
-              <span className="text-sky-400">Literal</span>
-              <span className="text-slate-300">, </span>
-              <span className="text-sky-400">List</span>{'\n'}
-              <span className="text-violet-400">from</span>
-              <span className="text-slate-300"> datetime </span>
-              <span className="text-violet-400">import</span>
-              <span className="text-sky-400"> date</span>{'\n'}
-              {'\n'}
-              <span className="text-emerald-400">CourtCategory</span>
-              <span className="text-slate-300"> = </span>
-              <span className="text-sky-400">Literal</span>
-              <span className="text-slate-300">[</span>
-              <span className="text-amber-300">&apos;High Court&apos;</span>
-              <span className="text-slate-300">, </span>
-              <span className="text-amber-300">&apos;Supreme Court&apos;</span>
-              <span className="text-slate-300">, </span>
-              <span className="text-amber-300">&apos;Advance Rulings&apos;</span>
-              <span className="text-slate-300">, </span>
-              <span className="text-amber-300">&apos;Circulars&apos;</span>
-              <span className="text-slate-300">]</span>{'\n'}
-              {'\n'}
-              <span className="text-violet-400">class</span>
-              <span className="text-emerald-400"> AISummary</span>
-              <span className="text-slate-300">(</span>
-              <span className="text-sky-400">BaseModel</span>
-              <span className="text-slate-300">):</span>{'\n'}
-              <span className="text-slate-300">    facts</span>
-              <span className="text-slate-500">:   </span>
-              <span className="text-sky-400">str</span>{'\n'}
-              <span className="text-slate-300">    issue</span>
-              <span className="text-slate-500">:   </span>
-              <span className="text-sky-400">str</span>{'\n'}
-              <span className="text-slate-300">    verdict</span>
-              <span className="text-slate-500">: </span>
-              <span className="text-sky-400">str</span>{'\n'}
-              {'\n'}
-              <span className="text-violet-400">class</span>
-              <span className="text-emerald-400"> GSTCase</span>
-              <span className="text-slate-300">(</span>
-              <span className="text-sky-400">BaseModel</span>
-              <span className="text-slate-300">):</span>{'\n'}
-              <span className="text-slate-300">    id</span>
-              <span className="text-slate-500">:                </span>
-              <span className="text-sky-400">str</span>{'\n'}
-              <span className="text-slate-300">    title</span>
-              <span className="text-slate-500">:             </span>
-              <span className="text-sky-400">str</span>{'\n'}
-              <span className="text-slate-300">    court_or_authority</span>
-              <span className="text-slate-500">: </span>
-              <span className="text-sky-400">str</span>{'\n'}
-              <span className="text-slate-300">    category</span>
-              <span className="text-slate-500">:          </span>
-              <span className="text-emerald-400">CourtCategory</span>{'\n'}
-              <span className="text-slate-300">    date</span>
-              <span className="text-slate-500">:              </span>
-              <span className="text-sky-400">str</span>{'\n'}
-              <span className="text-slate-300">    raw_date</span>
-              <span className="text-slate-500">:          </span>
-              <span className="text-sky-400">date</span>{'\n'}
-              <span className="text-slate-300">    impact_score</span>
-              <span className="text-slate-500">:      </span>
-              <span className="text-sky-400">int</span>
-              <span className="text-slate-300"> = </span>
-              <span className="text-sky-400">Field</span>
-              <span className="text-slate-300">(ge=</span>
-              <span className="text-amber-300">0</span>
-              <span className="text-slate-300">, le=</span>
-              <span className="text-amber-300">10</span>
-              <span className="text-slate-300">)</span>{'\n'}
-              <span className="text-slate-300">    tags</span>
-              <span className="text-slate-500">:              </span>
-              <span className="text-sky-400">List</span>
-              <span className="text-slate-300">[</span>
-              <span className="text-sky-400">str</span>
-              <span className="text-slate-300">]</span>{'\n'}
-              <span className="text-slate-300">    summary</span>
-              <span className="text-slate-500">:           </span>
-              <span className="text-emerald-400">AISummary</span>{'\n'}
-              <span className="text-slate-300">    pdf_url</span>
-              <span className="text-slate-500">:           </span>
-              <span className="text-sky-400">Optional</span>
-              <span className="text-slate-300">[</span>
-              <span className="text-sky-400">str</span>
-              <span className="text-slate-300">] = </span>
-              <span className="text-amber-300">None</span>{'\n'}
-              <span className="text-slate-300">    bench</span>
-              <span className="text-slate-500">:             </span>
-              <span className="text-sky-400">Optional</span>
-              <span className="text-slate-300">[</span>
-              <span className="text-sky-400">str</span>
-              <span className="text-slate-300">] = </span>
-              <span className="text-amber-300">None</span>{'\n'}
-              <span className="text-slate-300">    ai_confidence</span>
-              <span className="text-slate-500">:    </span>
-              <span className="text-sky-400">Optional</span>
-              <span className="text-slate-300">[</span>
-              <span className="text-sky-400">float</span>
-              <span className="text-slate-300">] = </span>
-              <span className="text-amber-300">None</span>
-            </code>
-          </pre>
-        </div>
-
-        {/* Section 3: Scrapling Integration */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm font-semibold text-emerald-400">
-            <Cpu className="w-4 h-4" />
-            <span>Scrapling Integration</span>
-            <span className="ml-auto px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-300">
-              scrapling v0.2
-            </span>
-          </div>
-          <pre className="p-5 rounded-2xl bg-gradient-to-br from-emerald-950/30 via-slate-950/80 to-slate-950/80 border border-emerald-800/30 overflow-x-auto text-[13px] leading-relaxed font-mono">
-            <code>
-              <span className="text-violet-400">from</span>
-              <span className="text-slate-300"> scrapling </span>
-              <span className="text-violet-400">import</span>
-              <span className="text-sky-400"> Fetcher</span>{'\n'}
-              {'\n'}
-              <span className="text-slate-300">fetcher = </span>
-              <span className="text-sky-400">Fetcher</span>
-              <span className="text-slate-300">(</span>
-              <span className="text-slate-300">auto_match=</span>
-              <span className="text-amber-300">True</span>
-              <span className="text-slate-300">)</span>{'\n'}
-              <span className="text-slate-300">page = fetcher.</span>
-              <span className="text-emerald-400">get</span>
-              <span className="text-slate-300">(</span>
-              <span className="text-amber-300">&apos;https://cbic-gst.gov.in/circulars.html&apos;</span>
-              <span className="text-slate-300">)</span>{'\n'}
-              {'\n'}
-              <span className="text-slate-300">circulars = page.</span>
-              <span className="text-emerald-400">css</span>
-              <span className="text-slate-300">(</span>
-              <span className="text-amber-300">&apos;.circular-row&apos;</span>
-              <span className="text-slate-300">)</span>{'\n'}
-              {'\n'}
-              <span className="text-violet-400">for</span>
-              <span className="text-slate-300"> c </span>
-              <span className="text-violet-400">in</span>
-              <span className="text-slate-300"> circulars:</span>{'\n'}
-              <span className="text-slate-300">    title = c.</span>
-              <span className="text-emerald-400">css_first</span>
-              <span className="text-slate-300">(</span>
-              <span className="text-amber-300">&apos;.title&apos;</span>
-              <span className="text-slate-300">).</span>
-              <span className="text-emerald-400">text</span>
-              <span className="text-slate-300">()</span>{'\n'}
-              <span className="text-slate-300">    pdf_link = c.</span>
-              <span className="text-emerald-400">css_first</span>
-              <span className="text-slate-300">(</span>
-              <span className="text-amber-300">&apos;a.pdf-download&apos;</span>
-              <span className="text-slate-300">).attrib[</span>
-              <span className="text-amber-300">&apos;href&apos;</span>
-              <span className="text-slate-300">]</span>
-            </code>
-          </pre>
-        </div>
-
-        {/* Footer: Data Pipeline */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
-          <div className="flex items-center gap-3 text-sm text-slate-300">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-            </span>
-            <span className="font-semibold">Data Pipeline:</span>
-            <span className="font-mono text-xs flex items-center gap-1.5">
-              <span className="text-emerald-400">Scrapling</span>
-              <span className="text-slate-600">→</span>
-              <span className="text-violet-400">FastAPI</span>
-              <span className="text-slate-600">→</span>
-              <span className="text-sky-400">React Dashboard</span>
-            </span>
-          </div>
-          <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            PIPELINE ACTIVE
+        <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 font-mono font-bold">
+          <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold">
+            <CheckCircle2 className="w-4 h-4" />
+            Data Pipeline: Scrapling → FastAPI → Next.js Dashboard
           </span>
+          <button
+            onClick={onClose}
+            className="px-5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold text-slate-900 dark:text-slate-100 transition-colors font-sans"
+          >
+            Close Schema Preview
+          </button>
         </div>
 
       </div>
