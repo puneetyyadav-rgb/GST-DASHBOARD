@@ -67,18 +67,18 @@ export const GST_SECTIONS_DATA: GSTSectionInfo[] = [
 const CORE_INITIAL_CASES: GSTCase[] = [
   {
     id: "gst-2026-circ-255",
-    title: "CBIC Circular No. 255/01/2026-GST: Standard Operating Procedure & Policy Clarifications on Audit and Investigations",
+    title: "CBIC Circular No. 255/01/2026-GST: Jurisdiction & Validity of Proceedings on Migration of Principal Place of Business (PPoB)",
     courtOrAuthority: "CBIC GST Policy Wing",
     category: "Circulars",
     date: "25 Jun 2026",
     rawDate: "2026-07-02",
     impactScore: 10.0,
     sectionId: "sec-16",
-    tags: ["Circular No. 255", "25th June 2026", "CBIC Policy Wing", "Audit Instructions", "Section 16 / 73"],
+    tags: ["Circular No. 255", "25th June 2026", "Jurisdiction Transfer", "PPoB Migration", "Section 73/74"],
     summary: {
-      facts: "Issued vide F. No. CBIC-20010/11/2026-GST on 25th June, 2026 by the Central Board of Indirect Taxes and Customs (GST Policy Wing), addressed to all Principal Chief Commissioners and Director Generals across India.",
-      issue: "Establishing standardized operational instructions to prevent roving audits, repetitive summons, and coercive tax recovery during GST investigations under Sections 16, 73, and 74.",
-      verdict: "The CBIC Policy Wing strictly directed that audit notices must not be issued without prior approval of the Commissioner and every inquiry must bear a valid Document Identification Number (DIN). Coercive recovery during investigation is prohibited."
+      facts: "Issued vide F. No. CBIC-20010/11/2026-GST on 25th June, 2026 by CBIC Policy Wing to clarify jurisdictional authority and validity of proceedings when a taxable person migrates/transfers from one GST jurisdiction to another due to change in Principal Place of Business (PPoB).",
+      issue: "Whether audit, SCN, investigation, or adjudication initiated by the transferor jurisdictional officer prior to PPoB migration remain valid, and which officer has authority to continue or initiate new proceedings post-migration.",
+      verdict: "The Board clarified that statutory proceedings initiated prior to migration remain 100% valid and must be taken over and continued by the transferee jurisdictional authority from that exact stage. The transferor officer loses authority post-migration and must forward any new findings to the new transferee officer."
     },
     pdfUrl: "/mock-pdfs/CBIC_Circular_255_01_2026.pdf",
     pdfSize: "1.8 MB",
