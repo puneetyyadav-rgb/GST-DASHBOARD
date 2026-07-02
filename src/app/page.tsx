@@ -11,6 +11,7 @@ import { SectionExplorer } from '@/components/SectionExplorer';
 import { NotificationHubModal } from '@/components/NotificationHubModal';
 import { DocumentViewerModal } from '@/components/DocumentViewerModal';
 import { AudioBriefingPlayer } from '@/components/AudioBriefingPlayer';
+import { OfficialSourcesBanner } from '@/components/OfficialSourcesBanner';
 import { INITIAL_GST_CASES, GST_SECTIONS_DATA, STREAMING_CASE_BANK } from '@/lib/mockData';
 import { CourtCategory, DateRangeFilter, RelevanceSort, GSTCase, ViewMode } from '@/lib/types';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -25,6 +26,7 @@ export default function DashboardPage() {
     'Supreme Court': true,
     'Advance Rulings': true,
     'Circulars': true,
+    'Notifications': true,
   });
   const [dateRange, setDateRange] = useState<DateRangeFilter>('All');
   const [relevanceSort, setRelevanceSort] = useState<RelevanceSort>('Latest');
@@ -81,6 +83,7 @@ export default function DashboardPage() {
       'Supreme Court': true,
       'Advance Rulings': true,
       'Circulars': true,
+      'Notifications': true,
     });
     setDateRange('All');
     setRelevanceSort('Latest');
@@ -136,6 +139,7 @@ export default function DashboardPage() {
       'Supreme Court': 0,
       'Advance Rulings': 0,
       'Circulars': 0,
+      'Notifications': 0,
     };
     cases.forEach((c) => {
       counts[c.category] = (counts[c.category] || 0) + 1;
@@ -194,7 +198,10 @@ export default function DashboardPage() {
         )}
       </AnimatePresence>
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        {/* Official Statutory Sources & Central Tax Notifications Hub */}
+        <OfficialSourcesBanner />
+
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
           <LeftSidebar

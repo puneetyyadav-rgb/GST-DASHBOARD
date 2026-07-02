@@ -1,4 +1,4 @@
-export type CourtCategory = 'High Court' | 'Supreme Court' | 'Advance Rulings' | 'Circulars';
+export type CourtCategory = 'High Court' | 'Supreme Court' | 'Advance Rulings' | 'Circulars' | 'Notifications';
 
 export type DateRangeFilter = 'All' | 'Today' | 'This Week' | 'This Month' | 'Custom';
 

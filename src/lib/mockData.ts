@@ -89,6 +89,73 @@ const CORE_INITIAL_CASES: GSTCase[] = [
     isNewArrival: true
   },
   {
+    id: "gst-2026-notif-014",
+    title: "Central Tax Notification No. 14/2026-Central Tax: Mandatory Biometric Aadhaar Authentication & E-Invoicing Threshold Amendment",
+    courtOrAuthority: "Ministry of Finance (CBIC)",
+    category: "Notifications",
+    date: "24 Jun 2026",
+    rawDate: "2026-07-01",
+    impactScore: 9.9,
+    sectionId: "sec-16",
+    tags: ["Notification 14/2026", "Central Tax", "Biometric Authentication", "Rule 8, 25 & 107", "E-Invoicing"],
+    summary: {
+      facts: "Issued vide G.S.R. No. 340(E) on 24th June, 2026 by the Ministry of Finance, Department of Revenue, amending the Central Goods and Services Tax Rules, 2017.",
+      issue: "Mandating physical biometric-based Aadhaar authentication at designated GST Suvidha Kendras for applicants flagged by risk-management systems to curb shell entity registrations and fake ITC issuance.",
+      verdict: "The Ministry officially notified that registration will not be granted until successful completion of biometric verification and photograph capture. E-invoicing threshold lowered to Rs. 2.5 Crores aggregate turnover."
+    },
+    pdfUrl: "/mock-pdfs/Notification_14_2026_CT.pdf",
+    pdfSize: "1.1 MB",
+    bench: "Department of Revenue, Ministry of Finance, Government of India",
+    assessmentYear: "FY 2026-27",
+    scraplingSourceUrl: "https://cbic-gst.gov.in/central-tax-notifications.html",
+    aiConfidence: 100.0,
+    isNewArrival: true
+  },
+  {
+    id: "gst-2026-notif-012",
+    title: "Notification No. 12/2026-Central Tax (Rate): Rationalization of GST Rates on Green Energy Equipment and Solar Modules",
+    courtOrAuthority: "Ministry of Finance (CBIC)",
+    category: "Notifications",
+    date: "18 Jun 2026",
+    rawDate: "2026-06-18",
+    impactScore: 9.5,
+    sectionId: "sec-17-5",
+    tags: ["Rate Notification 12/2026", "Schedule I & II", "Solar Modules", "Green Hydrogen", "Concessional Rate"],
+    summary: {
+      facts: "Issued vide G.S.R. No. 315(E) implementing recommendations of the 53rd GST Council Meeting regarding classification and rate structure of renewable energy installations.",
+      issue: "Disputes regarding composite supply works contract rate (18%) versus standalone solar module supply (12%) and admissibility of ITC on factory rooftop solar power plants.",
+      verdict: "Notified uniform 12% concessional rate on complete solar EPC installations and explicitly allowed unblocked ITC under Section 17(5)(c) when captive power generation is consumed directly within manufacturing units."
+    },
+    pdfUrl: "/mock-pdfs/Notification_12_2026_CT_Rate.pdf",
+    pdfSize: "1.5 MB",
+    bench: "Department of Revenue, Ministry of Finance, Government of India",
+    assessmentYear: "FY 2026-27",
+    scraplingSourceUrl: "https://cbic-gst.gov.in/central-tax-notifications.html",
+    aiConfidence: 100.0
+  },
+  {
+    id: "gst-2026-notif-009",
+    title: "Central Tax Notification No. 09/2026-Central Tax: Statutory Extension of Timeline for Filing GSTR-9 and GSTR-9C Annual Reconciliations",
+    courtOrAuthority: "Ministry of Finance (CBIC)",
+    category: "Notifications",
+    date: "10 Jun 2026",
+    rawDate: "2026-06-10",
+    impactScore: 9.3,
+    sectionId: "sec-73",
+    tags: ["Notification 09/2026", "Section 44", "Annual Return GSTR-9", "Reconciliation Statement GSTR-9C", "Limitation Extension"],
+    summary: {
+      facts: "Issued vide G.S.R. No. 290(E) under statutory powers conferred by Section 44 read with Section 168A of the Central Goods and Services Tax Act, 2017.",
+      issue: "Representations from trade bodies and chartered accountant associations requesting timeline relaxation due to GST portal technical upgrades and API schema changes.",
+      verdict: "The Central Government officially extended the statutory due date for furnishing the annual return in Form GSTR-9 and self-certified reconciliation statement in Form GSTR-9C by 30 days without late fees."
+    },
+    pdfUrl: "/mock-pdfs/Notification_09_2026_CT.pdf",
+    pdfSize: "0.9 MB",
+    bench: "Department of Revenue, Ministry of Finance, Government of India",
+    assessmentYear: "FY 2025-26",
+    scraplingSourceUrl: "https://cbic-gst.gov.in/central-tax-notifications.html",
+    aiConfidence: 100.0
+  },
+  {
     id: "gst-2026-hc-089",
     title: "M/s CloudNexus Technologies Pvt. Ltd. vs. Union of India & Ors.",
     courtOrAuthority: "Delhi High Court",
