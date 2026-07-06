@@ -12,6 +12,7 @@ import { NotificationHubModal } from '@/components/NotificationHubModal';
 import { DocumentViewerModal } from '@/components/DocumentViewerModal';
 import { AudioBriefingPlayer } from '@/components/AudioBriefingPlayer';
 import { OfficialSourcesBanner } from '@/components/OfficialSourcesBanner';
+import { StatutoryArchiveModal } from '@/components/StatutoryArchiveModal';
 import { INITIAL_GST_CASES, GST_SECTIONS_DATA, STREAMING_CASE_BANK } from '@/lib/mockData';
 import { CourtCategory, DateRangeFilter, RelevanceSort, GSTCase, ViewMode } from '@/lib/types';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -27,6 +28,7 @@ export default function DashboardPage() {
     'Advance Rulings': true,
     'Circulars': true,
     'Notifications': true,
+    'Advisories': true,
   });
   const [dateRange, setDateRange] = useState<DateRangeFilter>('All');
   const [relevanceSort, setRelevanceSort] = useState<RelevanceSort>('Latest');
@@ -38,6 +40,7 @@ export default function DashboardPage() {
   const [activeAudioCase, setActiveAudioCase] = useState<GSTCase | null>(null);
   const [showBackendModal, setShowBackendModal] = useState(false);
   const [showNotificationHub, setShowNotificationHub] = useState(false);
+  const [showArchiveModal, setShowArchiveModal] = useState(false);
 
   const [notificationLog, setNotificationLog] = useState<{ id: string; title: string; section: string; time: string }[]>([]);
   const [activeToast, setActiveToast] = useState<{ title: string; section: string } | null>(null);
@@ -84,6 +87,7 @@ export default function DashboardPage() {
       'Advance Rulings': true,
       'Circulars': true,
       'Notifications': true,
+      'Advisories': true,
     });
     setDateRange('All');
     setRelevanceSort('Latest');
@@ -140,6 +144,7 @@ export default function DashboardPage() {
       'Advance Rulings': 0,
       'Circulars': 0,
       'Notifications': 0,
+      'Advisories': 0,
     };
     cases.forEach((c) => {
       counts[c.category] = (counts[c.category] || 0) + 1;
@@ -200,7 +205,7 @@ export default function DashboardPage() {
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Official Statutory Sources & Central Tax Notifications Hub */}
-        <OfficialSourcesBanner />
+        <OfficialSourcesBanner onOpenArchiveModal={() => setShowArchiveModal(true)} />
 
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
@@ -309,6 +314,11 @@ export default function DashboardPage() {
         liveAlerts={liveAlerts}
         onToggleAlerts={() => setLiveAlerts(!liveAlerts)}
         recentNotificationLog={notificationLog}
+      />
+
+      <StatutoryArchiveModal
+        isOpen={showArchiveModal}
+        onClose={() => setShowArchiveModal(false)}
       />
     </div>
   );

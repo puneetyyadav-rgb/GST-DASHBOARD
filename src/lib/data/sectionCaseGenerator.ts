@@ -19,7 +19,9 @@ const COURTS: { court: string; category: CourtCategory; bench: string; portal: s
   { court: "Punjab & Haryana High Court", category: "High Court", bench: "Hon'ble Division Bench", portal: "https://phhc.gov.in/judgments/" },
   { court: "Telangana High Court", category: "High Court", bench: "Hon'ble Commercial Tax Bench", portal: "https://tshighcourt.gov.in/judgments/" },
   { court: "Advance Rulings Authority", category: "Advance Rulings", bench: "State AAR Bench", portal: "https://gstcouncil.gov.in/advance-rulings/" },
-  { court: "CBIC Official Circular", category: "Circulars", bench: "Tax Research Unit (TRU), CBIC", portal: "https://cbic-gst.gov.in/circulars/" }
+  { court: "CBIC Official Circular", category: "Circulars", bench: "Tax Research Unit (TRU), CBIC", portal: "https://cbic-gst.gov.in/circulars/" },
+  { court: "Central Tax Notification (Ministry of Finance)", category: "Notifications", bench: "CBIC GST Policy Wing", portal: "https://cbic-gst.gov.in/central-tax-notifications.html" },
+  { court: "Central Tax (Rate) Notification", category: "Notifications", bench: "Tax Research Unit, Ministry of Finance", portal: "https://cbic-gst.gov.in/central-tax-notifications.html" }
 ];
 
 const COMPANY_NAMES = [

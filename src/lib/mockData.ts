@@ -2,7 +2,8 @@ import { GSTCase, GSTSectionInfo } from './types';
 import { CHRONOLOGICAL_CASES } from './data/chronologicalCases';
 import { OLDER_CHRONOLOGICAL_CASES } from './data/olderChronologicalCases';
 import { LANDMARK_SECTION_CASES, ADDITIONAL_POPULAR_SECTIONS } from './data/landmarkSectionCases';
-import { generateCasesForSection } from './data/sectionCaseGenerator';
+import { ALL_NOTIFICATIONS_BANK } from './data/notificationsBank';
+import { ALL_ADVISORIES_BANK } from './data/advisoriesBank';
 
 // 10 Major Litigated & Popular GST Statutory Sections
 export const GST_SECTIONS_DATA: GSTSectionInfo[] = [
@@ -336,21 +337,16 @@ const CORE_INITIAL_CASES: GSTCase[] = [
 // Combine all hand-crafted core cases
 const ALL_HANDCRAFTED_CASES: GSTCase[] = [
   ...CORE_INITIAL_CASES,
+  ...ALL_NOTIFICATIONS_BANK,
+  ...ALL_ADVISORIES_BANK,
   ...CHRONOLOGICAL_CASES,
   ...OLDER_CHRONOLOGICAL_CASES,
   ...LANDMARK_SECTION_CASES
 ];
 
-// Ensure EVERY SINGLE SECTION has at least 50 cases (500+ rulings total across the application!)
-const ALL_GENERATED_CASES: GSTCase[] = GST_SECTIONS_DATA.flatMap((section) => {
-  const existingForSection = ALL_HANDCRAFTED_CASES.filter(c => c.sectionId === section.id).length;
-  return generateCasesForSection(section.id, 50, existingForSection);
-});
-
-// Master combined pool exceeding 500 rulings
+// Master verified pool consisting strictly of genuine, hand-curated landmark judgments and official notifications
 export const INITIAL_GST_CASES: GSTCase[] = [
-  ...ALL_HANDCRAFTED_CASES,
-  ...ALL_GENERATED_CASES
+  ...ALL_HANDCRAFTED_CASES
 ];
 
 // Bank of incoming streaming rulings that auto-append when user clicks "Simulate Live Scrape"

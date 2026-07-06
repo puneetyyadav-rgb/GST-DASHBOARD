@@ -22,6 +22,7 @@ from typing import List, Literal, Optional
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+import ingestion_engine
 
 # ---------------------------------------------------------------------------
 # Pydantic Models (mirrors src/lib/types.ts)
@@ -492,6 +493,51 @@ async def health_check() -> HealthResponse:
         version="0.1.0",
         timestamp=datetime.utcnow().isoformat() + "Z",
     )
+
+
+class ArchiveDownloadRequest(BaseModel):
+    category: str = Field(..., example="Notifications")
+    year: int = Field(..., example=2026)
+
+
+@app.post(
+    "/api/v1/archive/download",
+    summary="Trigger Year-Wise Archive Download",
+    tags=["Archive"],
+)
+async def trigger_archive_download(payload: ArchiveDownloadRequest):
+    """
+    Downloads official primary statutory PDFs and JSON metadata year-wise.
+    Stores verified files in local disk storage under storage/archive/<category>/<year>/.
+    """
+    if payload.year < 2017 or payload.year > 2026:
+        raise HTTPException(status_code=400, detail="Year must be between 2017 and 2026.")
+    result = ingestion_engine.download_year_archive(payload.category, payload.year)
+    return result
+
+
+@app.get(
+    "/api/v1/archive/status",
+    summary="Get Year-Wise Archive Storage Status",
+    tags=["Archive"],
+)
+async def archive_status():
+    """Returns exact local disk storage status and count of verified records per year."""
+    return ingestion_engine.get_archive_status()
+
+
+@app.post(
+    "/api/v1/scrape/live",
+    summary="Trigger Live Scrape of Latest 2026 Portals",
+    tags=["Scraper"],
+)
+async def trigger_live_portal_scrape():
+    """
+    Actively scrapes official government portals (services.gst.gov.in, cbic-gst.gov.in)
+    for recent 2026 updates, verifies SHA-256 hashes, and stores them in local disk archive.
+    """
+    return ingestion_engine.live_scrape_latest_portals()
+
 
 
 # ---------------------------------------------------------------------------

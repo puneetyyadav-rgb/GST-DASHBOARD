@@ -21,6 +21,7 @@ const CATEGORY_LIST: CourtCategory[] = [
   'Advance Rulings',
   'Circulars',
   'Notifications',
+  'Advisories',
 ];
 
 const DATE_RANGES: DateRangeFilter[] = [
